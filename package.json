@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "",
   "license": "ISC",
   "dependencies": {
     "createjs-easeljs": "^0.8.2",
-    "createjs-preloadjs": "^0.6.2"
+    "createjs-preloadjs": "^0.6.2",
+    "createjs-soundjs": "^0.6.2"
   }
 }

@@ -1,10 +1,8 @@
-import GameRoot from "./components/game";
+import WalkerGameRoot from "./Walker/Walker";
+import AsteroidsGame from "./Astroids/Astroids";
 
-let manifest = [
-    {src: "spritesheet_grant.png", id: "grant"},
-    {src: "sky.png", id: "sky"},
-    {src: "ground.png", id: "ground"},
-    {src: "hill1.png", id: "hill"}
-];
+let walker = new WalkerGameRoot("testCanvas");
+window.walker = walker;
 
-new GameRoot("testCanvas", manifest);
+let asteroids = new AsteroidsGame("gameCanvas");
+window.asteroids = asteroids;

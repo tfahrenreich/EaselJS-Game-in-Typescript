@@ -2,23 +2,23 @@
 /// <reference path="../../typings/globals/preloadjs/index.d.ts" />
 
 import {Manifest} from "../models/manifest";
-import Sky from "./Sky";
-import Ground from "./Ground";
-import Grant from "./Grant";
-import Hill from "./Hill";
+import Sky from "./components/Sky";
+import Ground from "./components/Ground";
+import Grant from "./components/Grant";
+import Hill from "./components/Hill";
 
-export default class GameRoot {
-    loader:createjs.LoadQueue;
-    stage:createjs.Stage;
-    w:number;
-    h:number;
+export default class WalkerGameRoot {
+    loader: createjs.LoadQueue;
+    stage: createjs.Stage;
+    w: number;
+    h: number;
 
-    sky:Sky;
-    ground:Ground;
-    grant:Grant;
-    hills:Hill[];
+    sky: Sky;
+    ground: Ground;
+    grant: Grant;
+    hills: Hill[];
 
-    constructor(id:string, manifest:Manifest[]) {
+    constructor(id: string) {
         this.stage = new createjs.Stage(id);
         this.w = this.stage.canvas.width;
         this.h = this.stage.canvas.height;
@@ -26,13 +26,23 @@ export default class GameRoot {
 
         this.loader = new createjs.LoadQueue(false);
 
-        this.loader.addEventListener("complete", ()=> {
+        this.loader.on("complete", ()=> {
             this.handleComplete();
         });
+    }
+
+    init() {
+        this.stage.canvas.style.display = "block";
+
+        let manifest: Manifest[] = [
+            {src: "spritesheet_grant.png", id: "grant"},
+            {src: "sky.png", id: "sky"},
+            {src: "ground.png", id: "ground"},
+            {src: "hill1.png", id: "hill"}
+        ];
 
         this.loader.loadManifest(manifest, true, "./public/_assets/art/");
     }
-
 
     handleComplete() {
         this.sky = new Sky(this.loader, this.w, this.h);
@@ -45,8 +55,8 @@ export default class GameRoot {
         this.stage.addChild(this.sky, this.hills[0], this.hills[1], this.ground, this.grant);
         //this.stage.addEventListener("stagemousedown", handleJumpStart);
 
-        createjs.Ticker.timingMode = createjs.Ticker.RAF;
-        createjs.Ticker.addEventListener("tick", event => {
+        //createjs.Ticker.timingMode = createjs.Ticker.RAF;
+        createjs.Ticker.on("tick", event => {
             this.tick(event)
         });
     }
@@ -60,13 +70,13 @@ export default class GameRoot {
         let h = this.h;
 
         let deltaS = event.delta / 1000;
-        let position = grant.x + 50 * deltaS;
-        let positionh = grant.y + 150 * deltaS;
+        let position = grant.x + 150 * deltaS;
+        let positionh = grant.y + 60 * deltaS;
 
         var grantW = grant.getBounds().width * grant.scaleX;
         var grantH = grant.getBounds().height * grant.scaleY;
         grant.x = (position >= w + grantW) ? -grantW : position;
-        grant.y = (position >= h + grantH) ? -grantH : positionh;
+        //grant.y = (position >= h + grantH) ? -grantH : positionh;
 
         ground.x = (ground.x - deltaS * 150) % ground.tileW;
         hill.x = (hill.x - deltaS * 30);

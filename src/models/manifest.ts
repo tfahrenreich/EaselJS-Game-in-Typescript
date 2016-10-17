@@ -5,4 +5,5 @@
 export class Manifest{
     src: string;
     id: string;
+    data?: number;
 }

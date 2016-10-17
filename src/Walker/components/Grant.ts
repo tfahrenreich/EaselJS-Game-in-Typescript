@@ -1,5 +1,5 @@
-/// <reference path="../../typings/globals/easeljs/index.d.ts" />
-/// <reference path="../../typings/globals/preloadjs/index.d.ts" />
+/// <reference path="../../../typings/globals/easeljs/index.d.ts" />
+/// <reference path="../../../typings/globals/preloadjs/index.d.ts" />
 export default class Grant extends createjs.Sprite {
     constructor(loader:createjs.LoadQueue) {
         let spriteSheet = new createjs.SpriteSheet({

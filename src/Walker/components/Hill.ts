@@ -1,5 +1,5 @@
-/// <reference path="../../typings/globals/easeljs/index.d.ts" />
-/// <reference path="../../typings/globals/preloadjs/index.d.ts" />
+/// <reference path="../../../typings/globals/easeljs/index.d.ts" />
+/// <reference path="../../../typings/globals/preloadjs/index.d.ts" />
 
 export default class Hill extends createjs.Bitmap {
     constructor(loader:createjs.LoadQueue, w:number, h:number, n:number) {

@@ -1,5 +1,5 @@
-/// <reference path="../../typings/globals/easeljs/index.d.ts" />
-/// <reference path="../../typings/globals/preloadjs/index.d.ts" />
+/// <reference path="../../../typings/globals/easeljs/index.d.ts" />
+/// <reference path="../../../typings/globals/preloadjs/index.d.ts" />
 import Graphics = createjs.Graphics;
 export default class Sky extends createjs.Shape {
     loader:createjs.LoadQueue;
