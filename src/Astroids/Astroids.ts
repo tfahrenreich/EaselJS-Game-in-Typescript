@@ -5,6 +5,7 @@
 import {Manifest} from "../models/manifest";
 import Ship from "./components/Ship";
 import KeyMappings from "./keymappings";
+import {lib} from "./PlanetaryGary_art_Canvas";
 
 export default class AsteroidsGame extends KeyMappings {
     static TURN_FACTOR = 7;		//how far the ship turns per frame
@@ -19,6 +20,7 @@ export default class AsteroidsGame extends KeyMappings {
 
     constructor(id: string) {
         super();
+        console.log(lib);
 
         let canvas = document.getElementById(id);
         this.stage = new createjs.Stage(canvas);
